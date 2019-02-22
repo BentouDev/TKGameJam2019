@@ -5,11 +5,11 @@
 *.shader text
 
 *.mat merge=unityyamlmerge eol=lf
-*.anim merge=unityyamlmerge eol=lf lockable
-*.unity merge=unityyamlmerge eol=lf lockable
-*.prefab merge=unityyamlmerge eol=lf lockable
+*.anim merge=unityyamlmerge eol=lf
+*.unity merge=unityyamlmerge eol=lf
+*.prefab merge=unityyamlmerge eol=lf
 *.physicsMaterial2D merge=unityyamlmerge eol=lf
 *.physicsMaterial merge=unityyamlmerge eol=lf
-*.asset merge=unityyamlmerge eol=lf lockable
+*.asset merge=unityyamlmerge eol=lf
 *.meta merge=unityyamlmerge eol=lf
-*.controller merge=unityyamlmerge eol=lf lockable
+*.controller merge=unityyamlmerge eol=lf
