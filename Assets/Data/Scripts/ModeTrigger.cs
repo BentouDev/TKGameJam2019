@@ -24,15 +24,15 @@ public class ModeTrigger : MonoBehaviour
         if (!CanAnimate)
             return;
         
+        CanAnimate = false;
+
         StartCoroutine(CoAnimateModeChange());
-        Game.ToggleMode();        
+        Game.ToggleMode();
     }
 
     IEnumerator CoAnimateModeChange()
     {
         yield return new WaitForSeconds(AnimDelayed);
-        
-        CanAnimate = false;
         
         float source = Music.Coefficient;
         float target = 1 - source;
@@ -48,6 +48,8 @@ public class ModeTrigger : MonoBehaviour
         }
 
         Music.Coefficient = target;
+        
+        yield return new WaitForSeconds(AnimDuration);
 
         CanAnimate = true;
     }

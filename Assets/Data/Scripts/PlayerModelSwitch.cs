@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Win32;
 using UnityEngine;
+using UnityTemplateProjects;
 
-public class PlayerModelSwitch : MonoBehaviour
+public class PlayerModelSwitch : MonoBehaviour, IModeChanged
 {
     public Transform EasyModel;
     public Transform HardModel;
@@ -14,28 +16,26 @@ public class PlayerModelSwitch : MonoBehaviour
         Game = FindObjectOfType<GameManager>();
         if (Game.StartingMode == GameManager.GameMode.Easy)
         {
-            EasyModel.gameObject.SetActive(true);
-            HardModel.gameObject.SetActive(false);
+            OnEasy();
         }
         else
         {
-            EasyModel.gameObject.SetActive(false);
-            HardModel.gameObject.SetActive(true);
+            OnHard();
         }
     }
     
     void Update()
     {
-        if (Game.CurrentMode == GameManager.GameMode.Easy)
-        {
-            if (!EasyModel.gameObject.activeSelf)
-                ToggleModel();
-        }
-        else
-        {
-            if (!HardModel.gameObject.activeSelf)
-                ToggleModel();
-        }
+//        if (Game.CurrentMode == GameManager.GameMode.Easy)
+//        {
+//            if (!EasyModel.gameObject.activeSelf)
+//                ToggleModel();
+//        }
+//        else
+//        {
+//            if (!HardModel.gameObject.activeSelf)
+//                ToggleModel();
+//        }
     }
 
     private void ToggleModel()
@@ -43,5 +43,17 @@ public class PlayerModelSwitch : MonoBehaviour
         var wasActive = EasyModel.gameObject.activeSelf;
         HardModel.gameObject.SetActive( wasActive);
         EasyModel.gameObject.SetActive(!wasActive);
+    }
+
+    public void OnEasy()
+    {
+        HardModel.gameObject.SetActive(false);
+        EasyModel.gameObject.SetActive(true);
+    }
+
+    public void OnHard()
+    {
+        HardModel.gameObject.SetActive(true);
+        EasyModel.gameObject.SetActive(false);
     }
 }

@@ -67,15 +67,23 @@ public class GameManager : MonoBehaviour
 
     public void ToggleMode()
     {
+        var ss = FindObjectsOfType<MonoBehaviour>().OfType<IModeChanged>();
+        
         if (CurrentMode == GameMode.Easy)
         {
             CurrentMode = GameMode.Hard;
             OnModeHard.Invoke();
+            foreach (IModeChanged s in ss) {
+                s.OnHard();
+            }
         }
         else
         {
             CurrentMode = GameMode.Easy;        
             OnModeEasy.Invoke();
+            foreach (IModeChanged s in ss) {
+                s.OnEasy();
+            }
         }
     }
 
