@@ -10,31 +10,37 @@ public class SweetKiwiController : MonoBehaviour
         Standing = 0,
         Jumping = 1,
         Hovering = 2,
+        Roaming = 3,
     }
 
     public KiwiType kiwiType = KiwiType.Standing;
-    
+
     public EdgeCollider2D groundDetector;
     public LayerMask groundLayers;
     public float minGroundDistance = .1f;
 
     public float jumpForce = 2;
+    public float oscilationValue = 3;
 
     private Rigidbody2D _rigidbody2D;
-    
+    private Vector3 initialPosition;
+
     // Start is called before the first frame update
     void Start( )
     {
         _rigidbody2D = GetComponent<Rigidbody2D>( );
+        initialPosition = transform.position;
 
         switch ( kiwiType )
         {
             case KiwiType.Hovering:
-                _rigidbody2D.bodyType = RigidbodyType2D.Kinematic;
+                _rigidbody2D.simulated = false;           
                 break;
             case KiwiType.Standing:
                 break;
             case KiwiType.Jumping:
+                break;
+            case KiwiType.Roaming:
                 break;
             default:
                 throw new ArgumentOutOfRangeException( );
@@ -55,6 +61,9 @@ public class SweetKiwiController : MonoBehaviour
             case KiwiType.Hovering:
                 hoveringKiwiHandler( );
                 break;
+            case KiwiType.Roaming:
+                roamingKiwiHandler( );
+                break;
             default:
                 throw new ArgumentOutOfRangeException( );
         }
@@ -66,12 +75,20 @@ public class SweetKiwiController : MonoBehaviour
 
     void jumpingKiwiHandler( )
     {
-        
     }
 
     void hoveringKiwiHandler( )
     {
-        
+        Debug.Log(initialPosition.x + Mathf.Sin(Time.time) * oscilationValue  );
+        transform.position.Set( 
+            transform.position.x,
+            initialPosition.x + Mathf.Sin(Time.time) * oscilationValue, 
+            transform.position.z 
+        );
+    }
+
+    void roamingKiwiHandler( )
+    {
     }
 
     void doJump( )
@@ -82,6 +99,6 @@ public class SweetKiwiController : MonoBehaviour
     bool isTouchingGround( )
     {
         return groundDetector.IsTouchingLayers( groundLayers ) ||
-            Physics2D.Raycast( transform.position, Vector2.down, minGroundDistance, groundLayers );
+               Physics2D.Raycast( transform.position, Vector2.down, minGroundDistance, groundLayers );
     }
 }
