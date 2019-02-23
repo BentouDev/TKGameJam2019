@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 1416752427}
   - component: {fileID: 1416752428}
   m_Layer: 0
-  m_Name: MusicController
+  m_Name: Music Controller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,6 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GoodMusic: {fileID: 1740640886}
   BadMusic: {fileID: 0}
+  MusicDelay: 0
   Coefficient: 0
 --- !u!114 &1416752428
 MonoBehaviour:
@@ -162,7 +163,11 @@ MonoBehaviour:
   DrawDebug: 1
   Controller: {fileID: 1416752427}
   BPM: 260
-  BeatMap: 0#
+  BeatMap: '#0'
+  BeatTrack: {fileID: 0}
+  BeatElementSize: 150
+  BlankSprite: {fileID: 21300000, guid: a73908bb14a10a644939cdc6c708f53c, type: 3}
+  BeatSprite: {fileID: 21300000, guid: 22ece8531d858bc41a39d912b8daf7b8, type: 3}
 --- !u!1 &1740640884
 GameObject:
   m_ObjectHideFlags: 0

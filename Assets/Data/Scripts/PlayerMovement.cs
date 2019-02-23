@@ -142,6 +142,9 @@ public class PlayerMovement : MonoBehaviour
 
     void DoSkill()
     {
+        if (RythmPassed)
+            RythmOverdid = true;
+        
         if (Rythm.IsInSkillFrame())
         {
             RythmPassed = true;
@@ -154,7 +157,7 @@ public class PlayerMovement : MonoBehaviour
 
     void OnAfterBeat()
     {
-        if (RythmPassed)
+        if (RythmPassed && !RythmOverdid)
         {
             RythmCombo++;
             RythmMsg = "GOOD " + RythmCombo;
@@ -162,9 +165,21 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             RythmCombo = 0;
-            RythmMsg = "BAAD";
+            if (!RythmPassed)
+                RythmMsg = "MISS!";
+            else if (RythmOverdid && RythmPassed)
+                RythmMsg = "TOO MUCH!";
+            else if (RythmOverdid)
+            {
+                RythmMsg = "EARLY!";
+            }
+            else
+            {
+                RythmMsg = string.Empty;
+            }
         }
 
+        RythmOverdid = false;
         RythmPassed = false;
     }
 

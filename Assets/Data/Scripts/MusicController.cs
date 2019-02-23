@@ -7,6 +7,8 @@ public class MusicController : MonoBehaviour
     [Header("NOTE: Edit volume in mixer, not in source!!!")]
     public AudioSource GoodMusic;
     public AudioSource BadMusic;
+
+    public float MusicDelay;
     
     [Range(0,1)]
     public float Coefficient;
@@ -23,9 +25,9 @@ public class MusicController : MonoBehaviour
     public void Play()
     {
         if (GoodMusic)
-            GoodMusic.Play();
+            GoodMusic.PlayScheduled(MusicDelay);
 
         if (BadMusic)
-            BadMusic.Play();
+            BadMusic.PlayScheduled(MusicDelay);
     }
 }
