@@ -19,9 +19,11 @@ public class PlayerMovement : MonoBehaviour
     public float JumpPower = 2;
     public float MinJumpTime = 1;
     public float MaxJumpTime = 1;
+    public float MoveTime = 0.2f;
 
     private float LastJumpTime;
     private float LastJumpButtonTime;
+    private float LastMoveTime;
 
     public EdgeCollider2D GroundDetector;
 
@@ -109,6 +111,12 @@ public class PlayerMovement : MonoBehaviour
         _isGrounded = GroundDetector.IsTouchingLayers(GroundLayers) || Physics2D.Raycast(transform.position, Vector2.down, MinGroundDistance, GroundLayers);
         
         Body.velocity = new Vector2(CurrentVelocity, AirVelocity) * Time.fixedDeltaTime;
+
+        if (Time.time - LastMoveTime > MoveTime)
+        {
+            LastDirection = 0;
+            CurrentVelocity = 0;
+        }
     }
 
     void ProcessInput()
@@ -144,6 +152,7 @@ public class PlayerMovement : MonoBehaviour
     void DoInput(float directional)
     {
         LastDirection = directional;
+        LastMoveTime = Time.time;
     }
 
     void DoJump()
