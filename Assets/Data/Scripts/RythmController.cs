@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityTemplateProjects;
 
-public class RythmController : MonoBehaviour
+public class RythmController : MonoBehaviour, IGameEnded
 {
     [Header("Debug")]
     public bool DrawDebug;
@@ -193,5 +194,20 @@ public class RythmController : MonoBehaviour
         }
         
         GUI.Label(new Rect(200,30,200,30), output);
+    }
+
+    public void OnGameWon()
+    {
+        CallTheStop();
+    }
+
+    public void OnGameLost()
+    {
+        CallTheStop();
+    }
+
+    void CallTheStop()
+    {
+        
     }
 }

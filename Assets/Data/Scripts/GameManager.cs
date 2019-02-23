@@ -1,8 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityTemplateProjects;
 
 public class GameManager : MonoBehaviour
 {
@@ -31,6 +35,9 @@ public class GameManager : MonoBehaviour
     public int Points { get; private set; }
 
     public UnityEvent OnLoseCallback;
+    public UnityEvent OnWonCallback;
+
+    private bool Ended;
     
     void Start()
     {
@@ -44,6 +51,9 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        if (Ended)
+            return;
+        
         if (Points <= 0)
         {
             OnLose();
@@ -73,11 +83,40 @@ public class GameManager : MonoBehaviour
 
     public void OnWin()
     {
+        Ended = true;
+        Player.enabled = false;
+        OnWonCallback.Invoke();
         
+        var ss = FindObjectsOfType<MonoBehaviour>().OfType<IGameEnded>();
+        foreach (IGameEnded s in ss) {
+            s.OnGameWon();
+        }
     }
 
     public void OnLose()
     {
+        Ended = true;
+        Player.enabled = false;
         OnLoseCallback.Invoke();
+        
+        var ss = FindObjectsOfType<MonoBehaviour>().OfType<IGameEnded>();
+        foreach (IGameEnded s in ss) {
+            s.OnGameLost();
+        }
+    }
+
+    public void WonTheGame()
+    {
+        OnWin();
+    }
+    
+    public void NextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    public void RetryLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
