@@ -37,6 +37,9 @@ public class GameManager : MonoBehaviour
     public UnityEvent OnLoseCallback;
     public UnityEvent OnWonCallback;
 
+    public UnityEvent OnModeEasy;
+    public UnityEvent OnModeHard;
+    
     private bool Ended;
     
     void Start()
@@ -65,9 +68,15 @@ public class GameManager : MonoBehaviour
     public void ToggleMode()
     {
         if (CurrentMode == GameMode.Easy)
+        {
             CurrentMode = GameMode.Hard;
+            OnModeHard.Invoke();
+        }
         else
-            CurrentMode = GameMode.Easy;
+        {
+            CurrentMode = GameMode.Easy;        
+            OnModeEasy.Invoke();
+        }
     }
 
     public void OnMissBeat()

@@ -19,28 +19,29 @@ public class GUIManager : MonoBehaviour, IGameEnded
         WonScreen.gameObject.SetActive(false);
         LostScreen.gameObject.SetActive(false);
     }
-    
+
     IEnumerator CoAnimate(Callback callback, float duration)
     {
-        float elapsed = 0;
+        float elapsed = 0.0f;
         while (elapsed < duration)
         {
+            elapsed += Time.deltaTime;
             callback(elapsed / duration);
             yield return null;
         }
 
-        callback(1);
+        callback(1.0f);
     }
 
     public void OnGameWon()
     {
         WonScreen.gameObject.SetActive(true);
-        StartCoroutine(CoAnimate((value) => { Group.alpha = 1 - value; }, Duration));
+        StartCoroutine(CoAnimate((value) => { Group.alpha = value; }, Duration));
     }
 
     public void OnGameLost()
     {
         LostScreen.gameObject.SetActive(true);
-        StartCoroutine(CoAnimate((value) => { Group.alpha = 1 - value; }, Duration));
+        StartCoroutine(CoAnimate((value) => { Group.alpha = value; }, Duration));
     }
 }
