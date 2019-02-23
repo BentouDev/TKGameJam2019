@@ -30,11 +30,6 @@ public class PlayerMovement : MonoBehaviour
 
     public float Gravity = Physics.gravity.y;
 
-    private float MaxGravity
-    {
-        get { return Gravity * 10; }
-    }
-
     [Header("Input")] 
     public string Left = "Left";
     public string Right = "Right";
@@ -43,6 +38,9 @@ public class PlayerMovement : MonoBehaviour
     private bool _isGrounded;
     private bool _canJump;
 
+    // Game
+    private GameManager Game;
+    
     // Rythm
     private RythmController Rythm;
 
@@ -71,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         LastJumpTime = 0;
+        LastJumpButtonTime = 0;
         
         if (!Body)
             Body = GetComponentInChildren<Rigidbody2D>();
@@ -78,6 +77,8 @@ public class PlayerMovement : MonoBehaviour
         Rythm = FindObjectOfType<RythmController>();
         Rythm.OnAfterBeat += OnAfterBeat;
         Rythm.OnAfterPause += OnAfterPause;
+
+        Game = FindObjectOfType<GameManager>();
     }
 
     void Update()
@@ -120,7 +121,7 @@ public class PlayerMovement : MonoBehaviour
                 DoInput(1);
                 DoSkill();
             }
-            
+
             DoJump();
             return;
         }
@@ -192,6 +193,7 @@ public class PlayerMovement : MonoBehaviour
 
             RythmCombo = 0;
             Rythm.Miss();
+            Game.OnMissBeat();
 
             if (!RythmPassed)
                 RythmMsg = "MISS!";
@@ -226,7 +228,7 @@ public class PlayerMovement : MonoBehaviour
     {
         return _isGrounded;
     }
-    
+
     void OnGUI()
     {
         GUI.Label(new Rect(Screen.width * 0.5f - 100, Screen.height * 0.5f - 10, 200, 20), RythmMsg);

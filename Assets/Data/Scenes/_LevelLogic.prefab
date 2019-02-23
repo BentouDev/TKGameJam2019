@@ -312,7 +312,7 @@ GameObject:
   - component: {fileID: 1740640885}
   - component: {fileID: 1740640886}
   m_Layer: 0
-  m_Name: Audio Source
+  m_Name: Audio Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -342,7 +342,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: ed701ca06653646488720b31c6c052d7, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 876a197508254624aacc27ae957ff265, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -437,6 +437,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5195874533425834142}
+  - component: {fileID: 2039338479}
   m_Layer: 0
   m_Name: _LevelLogic
   m_TagString: Untagged
@@ -462,3 +463,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2039338479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5195874533425834137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd9ba534aeaeb474cb59156a2766d115, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartingMode: 0
+  StartingPoints: 1000
+  OnMissBeatDmg: 50
+  OnHitPoints: 50
+  PointsSlider: {fileID: 0}
+  OnLoseCallback:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null

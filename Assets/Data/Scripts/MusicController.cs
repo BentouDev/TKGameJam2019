@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MusicController : MonoBehaviour
 {
-    [Header("NOTE: Edit volume in mixer, not in source!!!")]
+    [Header("NOTE: Edit volume in mixer, not in source!!! Bad 0 - 1 Good")]
     public AudioSource GoodMusic;
     public AudioSource BadMusic;
 
@@ -29,5 +29,12 @@ public class MusicController : MonoBehaviour
 
         if (BadMusic)
             BadMusic.PlayScheduled(MusicDelay);
+    }
+
+    public float GetTime()
+    {
+        if (GoodMusic.volume > 0.5f)
+            return GoodMusic.time;
+        return BadMusic.time;
     }
 }

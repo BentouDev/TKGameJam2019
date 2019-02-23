@@ -56,6 +56,5 @@ public class SwarmBehaviour : MonoBehaviour
     private void OnDrawGizmos( )
     {
         Gizmos.DrawWireSphere( transform.position, spawnScatterRadius );
-        throw new System.NotImplementedException( );
     }
 }
