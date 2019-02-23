@@ -63,7 +63,7 @@ public class RythmController : MonoBehaviour
 
     float GetTime()
     {
-        return Controller.GoodMusic.time;
+        return Controller.GetTime();
     }
 
     private float LastTime;
