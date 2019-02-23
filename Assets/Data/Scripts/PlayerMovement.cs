@@ -30,6 +30,11 @@ public class PlayerMovement : MonoBehaviour
 
     public float Gravity = Physics.gravity.y;
 
+    private float MaxGravity
+    {
+        get { return Gravity * 10; }
+    }
+
     [Header("Input")] public string Horizontal = "Horizontal";
     public string Jump = "Jump";
 
@@ -73,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                AirVelocity += Gravity;    
+                AirVelocity += Gravity;
             }
         }
     }
