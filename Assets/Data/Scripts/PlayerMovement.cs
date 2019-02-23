@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering;
 using UnityEngine.Serialization;
+using UnityTemplateProjects;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -42,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Game
     private GameManager Game;
+    private BeatFeedback BeatFeedback;
     
     // Rythm
     private RythmController Rythm;
@@ -81,6 +83,7 @@ public class PlayerMovement : MonoBehaviour
         Rythm.OnAfterPause += OnAfterPause;
 
         Game = FindObjectOfType<GameManager>();
+        BeatFeedback = FindObjectOfType<BeatFeedback>();
     }
 
     void Update()
@@ -193,6 +196,7 @@ public class PlayerMovement : MonoBehaviour
         {
             RythmCombo++;
             RythmMsg = "GOOD " + RythmCombo;
+            BeatFeedback.OnGood();
             Rythm.Hit();
         }
         else
@@ -205,11 +209,18 @@ public class PlayerMovement : MonoBehaviour
             Game.OnMissBeat();
 
             if (!RythmPassed)
+            {
+                BeatFeedback.OnMissed();
                 RythmMsg = "MISS!";
+            }
             else if (RythmOverdid && RythmPassed)
+            {
+                BeatFeedback.OnTooFast();
                 RythmMsg = "TOO MUCH!";
+            }
             else if (RythmOverdid)
             {
+                BeatFeedback.OnTooEarly();
                 RythmMsg = "EARLY!";
             }
             else
@@ -240,10 +251,10 @@ public class PlayerMovement : MonoBehaviour
 
     void OnGUI()
     {
-        GUI.Label(new Rect(Screen.width * 0.5f - 100, Screen.height * 0.5f - 10, 200, 20), RythmMsg);
-        
         if (!DrawDebug)
             return;
+
+        GUI.Label(new Rect(Screen.width * 0.5f - 100, Screen.height * 0.5f - 10, 200, 20), RythmMsg);
         
         GUI.Label(new Rect(10,10,200,30), "isGrounded: " + IsGrounded());
         GUI.Label(new Rect(10,30,200,30), "canJump: " + (_canJump || IsGrounded()));

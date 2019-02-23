@@ -179,16 +179,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5766831570465331967, guid: bff5dcf086da6c84a8cc384528992b8f,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.43
-      objectReference: {fileID: 0}
-    - target: {fileID: 5766831569411087737, guid: bff5dcf086da6c84a8cc384528992b8f,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -4.114
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bff5dcf086da6c84a8cc384528992b8f, type: 3}
 --- !u!1 &6190702709167096179 stripped
@@ -396,24 +386,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8318933725516231448, guid: 10bf99fa21e60db40a7ad218328bbdca,
+    - target: {fileID: 9070484351990047947, guid: 10bf99fa21e60db40a7ad218328bbdca,
         type: 3}
-      propertyPath: MaxSpeed
-      value: 720
+      propertyPath: spawnScatterRadius
+      value: 4.5
       objectReference: {fileID: 0}
-    - target: {fileID: 1541633489, guid: 10bf99fa21e60db40a7ad218328bbdca, type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 1
+    - target: {fileID: 995186832, guid: 10bf99fa21e60db40a7ad218328bbdca, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2813578851357461669, guid: 10bf99fa21e60db40a7ad218328bbdca,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4083476451432026389, guid: 10bf99fa21e60db40a7ad218328bbdca,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 33304469, guid: 10bf99fa21e60db40a7ad218328bbdca, type: 3}
+      propertyPath: m_Color.a
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10bf99fa21e60db40a7ad218328bbdca, type: 3}
