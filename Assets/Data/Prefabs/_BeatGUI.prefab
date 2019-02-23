@@ -216,6 +216,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2943247123666205241}
   - component: {fileID: 2943247123666205383}
+  - component: {fileID: 36097934}
   m_Layer: 5
   m_Name: Track
   m_TagString: Untagged
@@ -253,6 +254,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2943247123666205240}
   m_CullTransparentMesh: 0
+--- !u!95 &36097934
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2943247123666205240}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: eb8c0f1a96fd1fa41afd6e8ae8f57a6b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2943247123853024846
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,7 +430,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2943247123914457330}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: _BeatGUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -691,7 +711,7 @@ GameObject:
   - component: {fileID: 2943247124338348625}
   - component: {fileID: 2943247124338348639}
   - component: {fileID: 2943247124338348638}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: EventSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}

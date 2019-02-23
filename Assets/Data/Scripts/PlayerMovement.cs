@@ -161,10 +161,13 @@ public class PlayerMovement : MonoBehaviour
         {
             RythmCombo++;
             RythmMsg = "GOOD " + RythmCombo;
+            Rythm.Hit();
         }
         else
         {
             RythmCombo = 0;
+            Rythm.Miss();
+            
             if (!RythmPassed)
                 RythmMsg = "MISS!";
             else if (RythmOverdid && RythmPassed)

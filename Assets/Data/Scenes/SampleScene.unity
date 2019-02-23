@@ -112,6 +112,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!95 &36097936 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 36097934, guid: 0e2168838fa644849bf4927454002679,
+    type: 3}
+  m_PrefabInstance: {fileID: 2943247123944138054}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &830061119 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2943247124761468793, guid: 0e2168838fa644849bf4927454002679,
@@ -147,16 +153,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: _BeatGUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 2943247123914457333, guid: 0e2168838fa644849bf4927454002679,
-        type: 3}
-      propertyPath: m_Layer
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2943247123914457333, guid: 0e2168838fa644849bf4927454002679,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2943247123914457330, guid: 0e2168838fa644849bf4927454002679,
         type: 3}
@@ -212,11 +208,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2943247124338348624, guid: 0e2168838fa644849bf4927454002679,
-        type: 3}
-      propertyPath: m_Layer
-      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2943247124058973938, guid: 0e2168838fa644849bf4927454002679,
         type: 3}
@@ -489,6 +480,10 @@ PrefabInstance:
       propertyPath: TargetFrame
       value: 
       objectReference: {fileID: 1689761918}
+    - target: {fileID: 1416752428, guid: d8f50848e0fceec4888b666dca931fa0, type: 3}
+      propertyPath: SelectorAnimator
+      value: 
+      objectReference: {fileID: 36097936}
     - target: {fileID: 1740640886, guid: d8f50848e0fceec4888b666dca931fa0, type: 3}
       propertyPath: Priority
       value: 0
@@ -630,16 +625,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7443484618625112378, guid: c5688bd1d943cb04d9e90805474fa4c2,
-        type: 3}
-      propertyPath: m_Name
-      value: ProtoBlock
-      objectReference: {fileID: 0}
-    - target: {fileID: 1341097483044499608, guid: c5688bd1d943cb04d9e90805474fa4c2,
-        type: 3}
-      propertyPath: m_Name
-      value: ProtoBlock
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5688bd1d943cb04d9e90805474fa4c2, type: 3}

@@ -41,6 +41,12 @@ public class RythmController : MonoBehaviour
     public Sprite BlankSprite;
     public Sprite BeatSprite;
 
+    public Animator SelectorAnimator;
+
+    public string OnHit = "OnHit";
+    public string OnMiss = "OnMiss";
+    public string OnReady = "OnReady";
+
     public Image TargetFrame;
     private List<Image> TrackImages = new List<Image>();
     
@@ -114,7 +120,11 @@ public class RythmController : MonoBehaviour
         if (BeatIndex >= BeatMap.Length)
             BeatIndex = 0;
 
+        var oldSkill = _isInSkillFrame;
         _isInSkillFrame = GetSkillStatus(elapsed);
+        
+        if (_isInSkillFrame && !oldSkill)
+            SelectorAnimator.SetTrigger(OnReady);
         
         if (_isInSkillFrame)
             TargetFrame.color = Color.red;
@@ -126,6 +136,16 @@ public class RythmController : MonoBehaviour
     }
 
     private bool _isInSkillFrame;
+
+    public void Miss()
+    {
+        SelectorAnimator.SetTrigger(OnMiss);
+    }
+
+    public void Hit()
+    {
+        SelectorAnimator.SetTrigger(OnHit);
+    }
 
     private bool GetSkillStatus(float elapsed)
     {
