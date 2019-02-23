@@ -118,11 +118,11 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetButtonDown(Jump))
             {
                 // Move right on jump!
+                DoJump();
                 DoInput(1);
                 DoSkill();
             }
 
-            DoJump();
             return;
         }
 

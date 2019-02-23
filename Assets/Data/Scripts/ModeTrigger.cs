@@ -7,6 +7,7 @@ public class ModeTrigger : MonoBehaviour
     private GameManager Game;
     private MusicController Music;
     public float AnimDuration = 3;
+    public float AnimDelayed = 0.5f;
 
     protected static bool CanAnimate;
 
@@ -23,13 +24,15 @@ public class ModeTrigger : MonoBehaviour
         if (!CanAnimate)
             return;
         
+        CanAnimate = false;
+
         StartCoroutine(CoAnimateModeChange());
-        Game.ToggleMode();        
+        Game.ToggleMode();
     }
 
     IEnumerator CoAnimateModeChange()
     {
-        CanAnimate = false;
+        yield return new WaitForSeconds(AnimDelayed);
         
         float source = Music.Coefficient;
         float target = 1 - source;
@@ -45,6 +48,8 @@ public class ModeTrigger : MonoBehaviour
         }
 
         Music.Coefficient = target;
+        
+        yield return new WaitForSeconds(AnimDuration);
 
         CanAnimate = true;
     }
