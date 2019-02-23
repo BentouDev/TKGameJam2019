@@ -60,7 +60,8 @@ MonoBehaviour:
   MinJumpDistance: 1
   MinGroundDistance: 0.6
   Gravity: -9.81
-  Horizontal: Horizontal
+  Left: Left
+  Right: Right
   Jump: Jump
 --- !u!50 &2094020173
 Rigidbody2D:
