@@ -34,7 +34,7 @@ public class SweetKiwiController : MonoBehaviour
         switch ( kiwiType )
         {
             case KiwiType.Hovering:
-                _rigidbody2D.simulated = false;           
+                _rigidbody2D.simulated = false;
                 break;
             case KiwiType.Standing:
                 break;
