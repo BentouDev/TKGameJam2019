@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8489312635012093312}
   - component: {fileID: 8489312635012093313}
   m_Layer: 0
-  m_Name: LevelKubaTest
+  m_Name: ProtoBlock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

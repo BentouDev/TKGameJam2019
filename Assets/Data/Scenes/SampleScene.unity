@@ -339,7 +339,7 @@ PrefabInstance:
     - target: {fileID: 7443484617613100690, guid: c5688bd1d943cb04d9e90805474fa4c2,
         type: 3}
       propertyPath: m_Name
-      value: KubaLevel
+      value: _KubaProtoLevel
       objectReference: {fileID: 0}
     - target: {fileID: 7443484617613100693, guid: c5688bd1d943cb04d9e90805474fa4c2,
         type: 3}
@@ -395,6 +395,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7443484618625112378, guid: c5688bd1d943cb04d9e90805474fa4c2,
+        type: 3}
+      propertyPath: m_Name
+      value: ProtoBlock
+      objectReference: {fileID: 0}
+    - target: {fileID: 1341097483044499608, guid: c5688bd1d943cb04d9e90805474fa4c2,
+        type: 3}
+      propertyPath: m_Name
+      value: ProtoBlock
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5688bd1d943cb04d9e90805474fa4c2, type: 3}
