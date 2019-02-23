@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3108148875293634730}
   - component: {fileID: 7025164171489097166}
   - component: {fileID: 7715878133241237216}
+  - component: {fileID: 9056162719611433678}
   - component: {fileID: 886296994104852713}
   - component: {fileID: 5083127876143998499}
   - component: {fileID: 1441940278952073479}
@@ -80,6 +81,28 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &9056162719611433678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7045477754731041183}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6398c5054bfb1ef41b72203205411939, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kiwiType: 2
+  groundDetector: {fileID: 5083127876143998499}
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 1
+  minGroundDistance: 0.1
+  v2pos: {x: 0, y: 0}
+  v3pos: {x: 0, y: 0, z: 0}
+  jumpForce: 2
+  oscilationValue: 3
 --- !u!58 &886296994104852713
 CircleCollider2D:
   m_ObjectHideFlags: 0
