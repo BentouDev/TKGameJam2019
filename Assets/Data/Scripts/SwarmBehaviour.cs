@@ -5,7 +5,7 @@ using UnityEngine;
 public class SwarmBehaviour : MonoBehaviour
 {
     public GameObject Kiwi;
-    public int kiwiCount = 50;
+    public int kiwiCount = 125;
     public Rigidbody2D swarmRigidbody2D;
     public List<GameObject> kiwis;
     public List<Rigidbody2D> rigidKiwis;
