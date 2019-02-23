@@ -13,7 +13,19 @@ public class MusicController : MonoBehaviour
 
     void Update()
     {
+        if (!GoodMusic || !BadMusic)
+            return;
+        
         GoodMusic.volume = Coefficient;
         BadMusic.volume = 1.0f - Coefficient;
+    }
+
+    public void Play()
+    {
+        if (GoodMusic)
+            GoodMusic.Play();
+
+        if (BadMusic)
+            BadMusic.Play();
     }
 }

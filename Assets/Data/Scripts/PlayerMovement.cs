@@ -35,11 +35,23 @@ public class PlayerMovement : MonoBehaviour
         get { return Gravity * 10; }
     }
 
-    [Header("Input")] public string Horizontal = "Horizontal";
+    [Header("Input")] 
+    public string Horizontal = "Horizontal";
     public string Jump = "Jump";
+    public string Skill = "Fire1";
 
     private bool _isGrounded;
     private bool _canJump;
+
+    // Rythm
+    private RythmController Rythm;
+
+    private string RythmMsg;
+
+    private bool RythmPassed;
+    private bool RythmOverdid;
+
+    private int RythmCombo;
 
     public bool IsJumping
     {
@@ -62,6 +74,10 @@ public class PlayerMovement : MonoBehaviour
         
         if (!Body)
             Body = GetComponentInChildren<Rigidbody2D>();
+
+        Rythm = FindObjectOfType<RythmController>();
+        Rythm.OnAfterBeat += OnAfterBeat;
+        Rythm.OnAfterPause += OnAfterPause;
     }
 
     void Update()
@@ -95,6 +111,9 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButton(Jump))
             DoJump();
 
+        if (Input.GetButtonDown(Skill))
+            DoSkill();
+
         DoInput(Input.GetAxis(Horizontal));
     }
 
@@ -123,7 +142,41 @@ public class PlayerMovement : MonoBehaviour
 
     void DoSkill()
     {
-        
+        if (Rythm.IsInSkillFrame())
+        {
+            RythmPassed = true;
+        }
+        else
+        {
+            RythmOverdid = true;
+        }
+    }
+
+    void OnAfterBeat()
+    {
+        if (RythmPassed)
+        {
+            RythmCombo++;
+            RythmMsg = "GOOD " + RythmCombo;
+        }
+        else
+        {
+            RythmCombo = 0;
+            RythmMsg = "BAAD";
+        }
+
+        RythmPassed = false;
+    }
+
+    private void OnAfterPause()
+    {
+        if (RythmOverdid)
+        {
+            RythmCombo = 0;
+            RythmMsg = "BAAD";
+        }
+
+        RythmOverdid = false;
     }
 
     bool IsGrounded()
@@ -133,6 +186,8 @@ public class PlayerMovement : MonoBehaviour
     
     void OnGUI()
     {
+        GUI.Label(new Rect(Screen.width * 0.5f - 100, Screen.height * 0.5f - 10, 200, 20), RythmMsg);
+        
         if (!DrawDebug)
             return;
         
