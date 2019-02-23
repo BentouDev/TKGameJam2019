@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 396680025}
   - component: {fileID: 396680024}
   m_Layer: 11
-  m_Name: _ModeTrigger
+  m_Name: GAME_MODE_TRIGGER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
