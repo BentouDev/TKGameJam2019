@@ -35,11 +35,23 @@ public class PlayerMovement : MonoBehaviour
         get { return Gravity * 10; }
     }
 
-    [Header("Input")] public string Horizontal = "Horizontal";
+    [Header("Input")] 
+    public string Left = "Left";
+    public string Right = "Right";
     public string Jump = "Jump";
-
+    
     private bool _isGrounded;
     private bool _canJump;
+
+    // Rythm
+    private RythmController Rythm;
+
+    private string RythmMsg;
+
+    private bool RythmPassed;
+    private bool RythmOverdid;
+
+    private int RythmCombo;
 
     public bool IsJumping
     {
@@ -62,6 +74,10 @@ public class PlayerMovement : MonoBehaviour
         
         if (!Body)
             Body = GetComponentInChildren<Rigidbody2D>();
+
+        Rythm = FindObjectOfType<RythmController>();
+        Rythm.OnAfterBeat += OnAfterBeat;
+        Rythm.OnAfterPause += OnAfterPause;
     }
 
     void Update()
@@ -85,23 +101,48 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        CurrentVelocity = GetSpeed() * LastDirection;
+        CurrentVelocity = Mathf.Clamp(CurrentVelocity,-MaxSpeed, MaxSpeed);
+        
         _canJump = AirVelocity < 0 && Physics2D.Raycast(transform.position, Vector2.down, MinJumpDistance, GroundLayers);
         _isGrounded = GroundDetector.IsTouchingLayers(GroundLayers) || Physics2D.Raycast(transform.position, Vector2.down, MinGroundDistance, GroundLayers);
+        
         Body.velocity = new Vector2(CurrentVelocity, AirVelocity) * Time.fixedDeltaTime;
     }
 
     void ProcessInput()
     {
         if (Input.GetButton(Jump))
+        {
+            if (Input.GetButtonDown(Jump))
+            {
+                // Move right on jump!
+                DoInput(1);
+                DoSkill();
+            }
+            
             DoJump();
+            return;
+        }
 
-        DoInput(Input.GetAxis(Horizontal));
+        if (Input.GetButtonDown(Left))
+        {
+            DoInput(-1);
+            DoSkill();
+        }
+
+        if (Input.GetButtonDown(Right))
+        {
+            DoInput( 1);
+            DoSkill();
+        }
     }
+
+    private float LastDirection;
 
     void DoInput(float directional)
     {
-        CurrentVelocity = GetSpeed() * directional;
-        CurrentVelocity = Mathf.Clamp(CurrentVelocity,-MaxSpeed, MaxSpeed);
+        LastDirection = directional;
     }
 
     void DoJump()
@@ -123,7 +164,62 @@ public class PlayerMovement : MonoBehaviour
 
     void DoSkill()
     {
+        if (RythmPassed)
+            RythmOverdid = true;
         
+        if (Rythm.IsInSkillFrame())
+        {
+            RythmPassed = true;
+        }
+        else
+        {
+            RythmOverdid = true;
+        }
+    }
+
+    void OnAfterBeat()
+    {
+        if (RythmPassed && !RythmOverdid)
+        {
+            RythmCombo++;
+            RythmMsg = "GOOD " + RythmCombo;
+            Rythm.Hit();
+        }
+        else
+        {
+            LastDirection = 0;
+            CurrentVelocity = 0;
+
+            RythmCombo = 0;
+            Rythm.Miss();
+
+            if (!RythmPassed)
+                RythmMsg = "MISS!";
+            else if (RythmOverdid && RythmPassed)
+                RythmMsg = "TOO MUCH!";
+            else if (RythmOverdid)
+            {
+                RythmMsg = "EARLY!";
+            }
+            else
+            {
+                RythmMsg = string.Empty;
+            }
+        }
+
+        RythmOverdid = false;
+        RythmPassed = false;
+    }
+
+    private void OnAfterPause()
+    {
+        if (RythmOverdid)
+        {
+            RythmCombo = 0;
+            RythmMsg = "BAAD";
+        }
+
+        RythmOverdid = false;
     }
 
     bool IsGrounded()
@@ -133,6 +229,8 @@ public class PlayerMovement : MonoBehaviour
     
     void OnGUI()
     {
+        GUI.Label(new Rect(Screen.width * 0.5f - 100, Screen.height * 0.5f - 10, 200, 20), RythmMsg);
+        
         if (!DrawDebug)
             return;
         
