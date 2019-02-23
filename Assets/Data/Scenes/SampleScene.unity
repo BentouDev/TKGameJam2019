@@ -506,21 +506,5 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1930036074, guid: 10bf99fa21e60db40a7ad218328bbdca, type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1930036074, guid: 10bf99fa21e60db40a7ad218328bbdca, type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1806548111, guid: 10bf99fa21e60db40a7ad218328bbdca, type: 3}
-      propertyPath: m_havePropertiesChanged
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1806548111, guid: 10bf99fa21e60db40a7ad218328bbdca, type: 3}
-      propertyPath: m_isInputParsingRequired
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 10bf99fa21e60db40a7ad218328bbdca, type: 3}
