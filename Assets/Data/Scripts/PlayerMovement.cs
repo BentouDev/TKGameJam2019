@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
     public EdgeCollider2D GroundDetector;
 
     public float MinJumpDistance = 0.2f;
+    public float MinGroundDistance = 0.1f;
 
     public float Gravity = Physics.gravity.y;
 
@@ -80,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         _canJump = AirVelocity < 0 && Physics2D.Raycast(transform.position, Vector2.down, MinJumpDistance, GroundLayers);
-        _isGrounded = GroundDetector.IsTouchingLayers(GroundLayers);
+        _isGrounded = GroundDetector.IsTouchingLayers(GroundLayers) || Physics2D.Raycast(transform.position, Vector2.down, MinGroundDistance, GroundLayers);
         Body.velocity = new Vector2(CurrentVelocity, AirVelocity) * Time.fixedDeltaTime;
     }
 
