@@ -36,10 +36,10 @@ public class PlayerMovement : MonoBehaviour
     }
 
     [Header("Input")] 
-    public string Horizontal = "Horizontal";
+    public string Left = "Left";
+    public string Right = "Right";
     public string Jump = "Jump";
-    public string Skill = "Fire1";
-
+    
     private bool _isGrounded;
     private bool _canJump;
 
@@ -101,26 +101,48 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        CurrentVelocity = GetSpeed() * LastDirection;
+        CurrentVelocity = Mathf.Clamp(CurrentVelocity,-MaxSpeed, MaxSpeed);
+        
         _canJump = AirVelocity < 0 && Physics2D.Raycast(transform.position, Vector2.down, MinJumpDistance, GroundLayers);
         _isGrounded = GroundDetector.IsTouchingLayers(GroundLayers) || Physics2D.Raycast(transform.position, Vector2.down, MinGroundDistance, GroundLayers);
+        
         Body.velocity = new Vector2(CurrentVelocity, AirVelocity) * Time.fixedDeltaTime;
     }
 
     void ProcessInput()
     {
         if (Input.GetButton(Jump))
+        {
+            if (Input.GetButtonDown(Jump))
+            {
+                // Move right on jump!
+                DoInput(1);
+                DoSkill();
+            }
+            
             DoJump();
+            return;
+        }
 
-        if (Input.GetButtonDown(Skill))
+        if (Input.GetButtonDown(Left))
+        {
+            DoInput(-1);
             DoSkill();
+        }
 
-        DoInput(Input.GetAxis(Horizontal));
+        if (Input.GetButtonDown(Right))
+        {
+            DoInput( 1);
+            DoSkill();
+        }
     }
+
+    private float LastDirection;
 
     void DoInput(float directional)
     {
-        CurrentVelocity = GetSpeed() * directional;
-        CurrentVelocity = Mathf.Clamp(CurrentVelocity,-MaxSpeed, MaxSpeed);
+        LastDirection = directional;
     }
 
     void DoJump()
@@ -165,9 +187,12 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
+            LastDirection = 0;
+            CurrentVelocity = 0;
+
             RythmCombo = 0;
             Rythm.Miss();
-            
+
             if (!RythmPassed)
                 RythmMsg = "MISS!";
             else if (RythmOverdid && RythmPassed)
