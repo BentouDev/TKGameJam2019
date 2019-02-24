@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 7045477754731041183}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -43,7 +43,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7045477754731041183}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 2d5ee02974507d1489d10d04fc3dc299, type: 3}
 --- !u!23 &7715878133241237216
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 8d6beec3b52e8b348a7c3f999f21f81e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,10 +99,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   minGroundDistance: 0.1
-  v2pos: {x: 0, y: 0}
-  v3pos: {x: 0, y: 0, z: 0}
   jumpForce: 2
   oscilationValue: 3
+  roamingDirection: -1
 --- !u!58 &886296994104852713
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -116,9 +115,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.25}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.25
 --- !u!68 &5083127876143998499
 EdgeCollider2D:
   m_ObjectHideFlags: 0
