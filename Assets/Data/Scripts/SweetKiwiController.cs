@@ -2,8 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.WSA;
 
-public class SweetKiwiController : MonoBehaviour
+public class SweetKiwiController : MonoBehaviour//, IBeatHandler
 {
     public enum KiwiType
     {
@@ -11,6 +12,12 @@ public class SweetKiwiController : MonoBehaviour
         Jumping = 1,
         Hovering = 2,
         Roaming = 3,
+    }
+    
+    public enum RoamingDirection
+    {
+        Left = -1,
+        Right = 1,
     }
 
     public KiwiType kiwiType = KiwiType.Standing;
@@ -21,6 +28,8 @@ public class SweetKiwiController : MonoBehaviour
 
     public float jumpForce = 2;
     public float oscilationValue = 3;
+    public RoamingDirection roamingDirection = RoamingDirection.Left;
+    
 
     private Rigidbody2D _rigidbody2D;
     private Vector3 initialPosition;
