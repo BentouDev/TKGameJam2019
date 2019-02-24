@@ -261,4 +261,14 @@ public class PlayerMovement : MonoBehaviour
         GUI.Label(new Rect(10,50,200,30), "air vel: " + AirVelocity);
         GUI.Label(new Rect(10,70,200,30), "move vel: " + CurrentVelocity);
     }
+
+    public float GetAirVelocity()
+    {
+        return AirVelocity;
+    }
+
+    public bool IsMoving()
+    {
+        return Mathf.Abs(LastDirection) > 0;
+    }
 }
