@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityTemplateProjects;
 
-public class RythmController : MonoBehaviour
+public class RythmController : MonoBehaviour, IGameEnded
 {
     [Header("Debug")]
     public bool DrawDebug;
@@ -120,11 +121,11 @@ public class RythmController : MonoBehaviour
         if (BeatIndex >= BeatMap.Length)
             BeatIndex = 0;
 
-        var oldSkill = _isInSkillFrame;
+        // var oldSkill = _isInSkillFrame;
         _isInSkillFrame = GetSkillStatus(elapsed);
         
-        if (_isInSkillFrame && !oldSkill)
-            SelectorAnimator.SetTrigger(OnReady);
+//        if (_isInSkillFrame && !oldSkill)
+//            SelectorAnimator.SetTrigger(OnReady);
         
         if (_isInSkillFrame)
             TargetFrame.color = Color.red;
@@ -139,12 +140,12 @@ public class RythmController : MonoBehaviour
 
     public void Miss()
     {
-        SelectorAnimator.SetTrigger(OnMiss);
+        // SelectorAnimator.SetTrigger(OnMiss);
     }
 
     public void Hit()
     {
-        SelectorAnimator.SetTrigger(OnHit);
+        // SelectorAnimator.SetTrigger(OnHit);
     }
 
     private bool GetSkillStatus(float elapsed)
@@ -193,5 +194,20 @@ public class RythmController : MonoBehaviour
         }
         
         GUI.Label(new Rect(200,30,200,30), output);
+    }
+
+    public void OnGameWon()
+    {
+        CallTheStop();
+    }
+
+    public void OnGameLost()
+    {
+        CallTheStop();
+    }
+
+    void CallTheStop()
+    {
+        
     }
 }

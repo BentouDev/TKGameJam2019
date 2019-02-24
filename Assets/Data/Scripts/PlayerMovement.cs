@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering;
 using UnityEngine.Serialization;
+using UnityTemplateProjects;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -19,9 +20,11 @@ public class PlayerMovement : MonoBehaviour
     public float JumpPower = 2;
     public float MinJumpTime = 1;
     public float MaxJumpTime = 1;
+    public float MoveTime = 0.2f;
 
     private float LastJumpTime;
     private float LastJumpButtonTime;
+    private float LastMoveTime;
 
     public EdgeCollider2D GroundDetector;
 
@@ -40,6 +43,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Game
     private GameManager Game;
+    private BeatFeedback BeatFeedback;
     
     // Rythm
     private RythmController Rythm;
@@ -79,6 +83,7 @@ public class PlayerMovement : MonoBehaviour
         Rythm.OnAfterPause += OnAfterPause;
 
         Game = FindObjectOfType<GameManager>();
+        BeatFeedback = FindObjectOfType<BeatFeedback>();
     }
 
     void Update()
@@ -109,6 +114,12 @@ public class PlayerMovement : MonoBehaviour
         _isGrounded = GroundDetector.IsTouchingLayers(GroundLayers) || Physics2D.Raycast(transform.position, Vector2.down, MinGroundDistance, GroundLayers);
         
         Body.velocity = new Vector2(CurrentVelocity, AirVelocity) * Time.fixedDeltaTime;
+
+        if (Time.time - LastMoveTime > MoveTime)
+        {
+            LastDirection = 0;
+            CurrentVelocity = 0;
+        }
     }
 
     void ProcessInput()
@@ -118,11 +129,11 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetButtonDown(Jump))
             {
                 // Move right on jump!
+                DoJump();
                 DoInput(1);
                 DoSkill();
             }
 
-            DoJump();
             return;
         }
 
@@ -144,6 +155,7 @@ public class PlayerMovement : MonoBehaviour
     void DoInput(float directional)
     {
         LastDirection = directional;
+        LastMoveTime = Time.time;
     }
 
     void DoJump()
@@ -184,6 +196,7 @@ public class PlayerMovement : MonoBehaviour
         {
             RythmCombo++;
             RythmMsg = "GOOD " + RythmCombo;
+            BeatFeedback.OnGood();
             Rythm.Hit();
         }
         else
@@ -196,11 +209,18 @@ public class PlayerMovement : MonoBehaviour
             Game.OnMissBeat();
 
             if (!RythmPassed)
+            {
+                BeatFeedback.OnMissed();
                 RythmMsg = "MISS!";
+            }
             else if (RythmOverdid && RythmPassed)
+            {
+                BeatFeedback.OnTooFast();
                 RythmMsg = "TOO MUCH!";
+            }
             else if (RythmOverdid)
             {
+                BeatFeedback.OnTooEarly();
                 RythmMsg = "EARLY!";
             }
             else
@@ -231,14 +251,24 @@ public class PlayerMovement : MonoBehaviour
 
     void OnGUI()
     {
-        GUI.Label(new Rect(Screen.width * 0.5f - 100, Screen.height * 0.5f - 10, 200, 20), RythmMsg);
-        
         if (!DrawDebug)
             return;
+
+        GUI.Label(new Rect(Screen.width * 0.5f - 100, Screen.height * 0.5f - 10, 200, 20), RythmMsg);
         
         GUI.Label(new Rect(10,10,200,30), "isGrounded: " + IsGrounded());
         GUI.Label(new Rect(10,30,200,30), "canJump: " + (_canJump || IsGrounded()));
         GUI.Label(new Rect(10,50,200,30), "air vel: " + AirVelocity);
         GUI.Label(new Rect(10,70,200,30), "move vel: " + CurrentVelocity);
+    }
+
+    public float GetAirVelocity()
+    {
+        return AirVelocity;
+    }
+
+    public bool IsMoving()
+    {
+        return Mathf.Abs(LastDirection) > 0;
     }
 }

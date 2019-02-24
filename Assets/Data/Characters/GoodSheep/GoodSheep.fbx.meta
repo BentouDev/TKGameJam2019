@@ -1,0 +1,320 @@
+fileFormatVersion: 2
+guid: 3e00464ac410b164fa0a7bc0e8da2122
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: B_L_Leg_01
+    100002: B_L_Leg_01 1
+    100004: B_L_Leg_CTL
+    100006: B_L_Leg_top
+    100008: B_R_Leg_01
+    100010: B_R_Leg_02
+    100012: B_R_Leg_CTL
+    100014: B_R_Leg_top
+    100016: Back_CTL
+    100018: Chain_bone
+    100020: F_L_Leg_01
+    100022: F_L_Leg_02
+    100024: F_L_Leg_CTL
+    100026: F_L_Leg_top
+    100028: F_R_Leg_01
+    100030: F_R_Leg_02
+    100032: F_R_Leg_CTL
+    100034: F_R_Leg_top
+    100036: //RootNode
+    100038: Head
+    100040: Head_CTL
+    100042: Head_top
+    100044: Hips
+    100046: Horizontal_CTL
+    100048: ikHandle1
+    100050: ikHandle2
+    100052: ikHandle3
+    100054: ikHandle4
+    100056: imagePlane1
+    100058: joint10
+    100060: joint10 1
+    100062: joint11
+    100064: joint11 1
+    100066: joint12
+    100068: joint12 1
+    100070: joint13
+    100072: joint13 1
+    100074: joint14
+    100076: joint14 1
+    100078: joint15
+    100080: joint15 1
+    100082: joint16
+    100084: joint16 1
+    100086: joint17
+    100088: joint17 1
+    100090: joint18
+    100092: joint18 1
+    100094: joint19
+    100096: joint19 1
+    100098: joint20
+    100100: joint20 1
+    100102: joint21
+    100104: joint21 1
+    100106: joint22
+    100108: joint22 1
+    100110: joint23
+    100112: joint23 1
+    100114: joint24
+    100116: joint24 1
+    100118: joint25
+    100120: joint25 1
+    100122: joint26
+    100124: joint26 1
+    100126: joint27
+    100128: joint27 1
+    100130: joint28
+    100132: joint28 1
+    100134: joint29
+    100136: joint29 1
+    100138: joint3
+    100140: joint3 1
+    100142: joint30
+    100144: joint30 1
+    100146: joint31
+    100148: joint31 1
+    100150: joint32
+    100152: joint32 1
+    100154: joint33
+    100156: joint33 1
+    100158: joint34
+    100160: joint34 1
+    100162: joint35
+    100164: joint35 1
+    100166: joint37
+    100168: joint4
+    100170: joint4 1
+    100172: joint5
+    100174: joint5 1
+    100176: joint6
+    100178: joint6 1
+    100180: joint7
+    100182: joint7 1
+    100184: joint8
+    100186: joint8 1
+    100188: joint9
+    100190: joint9 1
+    100192: locator1
+    100194: locator2
+    100196: locator3
+    100198: locator4
+    100200: Mesh3
+    100202: nurbsCircle1
+    100204: Root
+    100206: Root_CTL
+    100208: Shoulder_CTL
+    100210: Shoulders
+    100212: Star_1
+    100214: Star_2
+    100216: Star_CTL
+    100218: Vertical_CTL
+    400000: B_L_Leg_01
+    400002: B_L_Leg_01 1
+    400004: B_L_Leg_CTL
+    400006: B_L_Leg_top
+    400008: B_R_Leg_01
+    400010: B_R_Leg_02
+    400012: B_R_Leg_CTL
+    400014: B_R_Leg_top
+    400016: Back_CTL
+    400018: Chain_bone
+    400020: F_L_Leg_01
+    400022: F_L_Leg_02
+    400024: F_L_Leg_CTL
+    400026: F_L_Leg_top
+    400028: F_R_Leg_01
+    400030: F_R_Leg_02
+    400032: F_R_Leg_CTL
+    400034: F_R_Leg_top
+    400036: //RootNode
+    400038: Head
+    400040: Head_CTL
+    400042: Head_top
+    400044: Hips
+    400046: Horizontal_CTL
+    400048: ikHandle1
+    400050: ikHandle2
+    400052: ikHandle3
+    400054: ikHandle4
+    400056: imagePlane1
+    400058: joint10
+    400060: joint10 1
+    400062: joint11
+    400064: joint11 1
+    400066: joint12
+    400068: joint12 1
+    400070: joint13
+    400072: joint13 1
+    400074: joint14
+    400076: joint14 1
+    400078: joint15
+    400080: joint15 1
+    400082: joint16
+    400084: joint16 1
+    400086: joint17
+    400088: joint17 1
+    400090: joint18
+    400092: joint18 1
+    400094: joint19
+    400096: joint19 1
+    400098: joint20
+    400100: joint20 1
+    400102: joint21
+    400104: joint21 1
+    400106: joint22
+    400108: joint22 1
+    400110: joint23
+    400112: joint23 1
+    400114: joint24
+    400116: joint24 1
+    400118: joint25
+    400120: joint25 1
+    400122: joint26
+    400124: joint26 1
+    400126: joint27
+    400128: joint27 1
+    400130: joint28
+    400132: joint28 1
+    400134: joint29
+    400136: joint29 1
+    400138: joint3
+    400140: joint3 1
+    400142: joint30
+    400144: joint30 1
+    400146: joint31
+    400148: joint31 1
+    400150: joint32
+    400152: joint32 1
+    400154: joint33
+    400156: joint33 1
+    400158: joint34
+    400160: joint34 1
+    400162: joint35
+    400164: joint35 1
+    400166: joint37
+    400168: joint4
+    400170: joint4 1
+    400172: joint5
+    400174: joint5 1
+    400176: joint6
+    400178: joint6 1
+    400180: joint7
+    400182: joint7 1
+    400184: joint8
+    400186: joint8 1
+    400188: joint9
+    400190: joint9 1
+    400192: locator1
+    400194: locator2
+    400196: locator3
+    400198: locator4
+    400200: Mesh3
+    400202: nurbsCircle1
+    400204: Root
+    400206: Root_CTL
+    400208: Shoulder_CTL
+    400210: Shoulders
+    400212: Star_1
+    400214: Star_2
+    400216: Star_CTL
+    400218: Vertical_CTL
+    2100000: lambert1
+    4300000: Mesh3
+    7400000: T-Pose
+    7400002: Good_Walk
+    7400004: Good_Idle
+    7400006: Good_Jump
+    7400008: Good_Fall
+    9500000: //RootNode
+    13700000: Mesh3
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

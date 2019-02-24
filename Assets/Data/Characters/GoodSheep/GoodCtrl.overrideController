@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: GoodCtrl
+  m_Controller: {fileID: 9100000, guid: 17dde8e115b976f4faf05a77718f7247, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400008, guid: 368ffaf1e6f722d4093b0b95f2be0330, type: 3}
+    m_OverrideClip: {fileID: 7400008, guid: 3e00464ac410b164fa0a7bc0e8da2122, type: 3}
+  - m_OriginalClip: {fileID: 7400004, guid: 368ffaf1e6f722d4093b0b95f2be0330, type: 3}
+    m_OverrideClip: {fileID: 7400004, guid: 3e00464ac410b164fa0a7bc0e8da2122, type: 3}
+  - m_OriginalClip: {fileID: 7400006, guid: 368ffaf1e6f722d4093b0b95f2be0330, type: 3}
+    m_OverrideClip: {fileID: 7400006, guid: 3e00464ac410b164fa0a7bc0e8da2122, type: 3}
+  - m_OriginalClip: {fileID: 7400002, guid: 368ffaf1e6f722d4093b0b95f2be0330, type: 3}
+    m_OverrideClip: {fileID: 7400002, guid: 3e00464ac410b164fa0a7bc0e8da2122, type: 3}
