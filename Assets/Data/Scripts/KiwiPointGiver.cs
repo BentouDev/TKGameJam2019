@@ -14,6 +14,6 @@ public class KiwiPointGiver : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider)
     {
         Game.OnEnemyHit();
-        enabled = false;
+        Destroy(transform.parent.gameObject);
     }
 }
