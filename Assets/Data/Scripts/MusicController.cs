@@ -1,15 +1,20 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityTemplateProjects;
 
-public class MusicController : MonoBehaviour
+public class MusicController : MonoBehaviour, IGameEnded
 {
     public enum NiceProgress
     {
         Yes,
         No
     };
+
+    public AudioSource LostMusic;
+    public AudioSource WonMusic;
     
     [Header("NOTE: Edit volume in mixer, not in source!!! Bad 0 - 1 Good")]
     public AudioSource[] GoodMusic;
@@ -67,5 +72,27 @@ public class MusicController : MonoBehaviour
         if (GoodMusic[(int) Progress].volume > 0.5f)
             return GoodMusic[(int) Progress].time;
         return BadMusic[(int) Progress].time;
+    }
+
+    public void OnGameWon()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            GoodMusic[i].Stop();
+            BadMusic[i].Stop();    
+        }
+        
+        WonMusic.Play();
+    }
+
+    public void OnGameLost()
+    {
+        for (int i = 0; i < 2; i++)
+        {
+            GoodMusic[i].Stop();
+            BadMusic[i].Stop();    
+        }
+        
+        LostMusic.Play();
     }
 }

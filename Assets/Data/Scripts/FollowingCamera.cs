@@ -10,6 +10,8 @@ public class FollowingCamera : MonoBehaviour
     public float LerpSpeed = 3;
 
     public float DampTime = 0.3f;
+
+    public float VerticalOffset = 1;
     
     private Vector3 ScreenPos;
     private Vector3 Velocity;
@@ -33,7 +35,7 @@ public class FollowingCamera : MonoBehaviour
         ScreenPos = Camera.main.WorldToScreenPoint(Target.position);
         
         var delta = Target.position - Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, ScreenPos.z));
-        var destination = transform.position + delta;
+        var destination = transform.position + delta + new Vector3(0,VerticalOffset,0);
         
         transform.position = Vector3.SmoothDamp(transform.position, destination, ref Velocity, DampTime);
     }

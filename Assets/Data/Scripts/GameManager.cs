@@ -28,12 +28,16 @@ public class GameManager : MonoBehaviour
     public int OnMissBeatDmg = 50;
 
     public int OnHitPoints = 50;
+    public int OnGoodBeatPoints = 10;
 
     [Header("UI & Fx")]
     public Slider PointsSlider;
 
     public int Points { get; private set; }
 
+    public UnityEvent OnMissEasy;
+    public UnityEvent OnMissHard;
+    
     public UnityEvent OnLoseCallback;
     public UnityEvent OnWonCallback;
 
@@ -75,12 +79,19 @@ public class GameManager : MonoBehaviour
         {
             OnLose();
         }
+        
+        if (Points > 1500)
+            Debug.DebugBreak();
 
+        Points = Mathf.Clamp(Points, 0, 2000);
         PointsSlider.value = Points;
     }
 
     public void ToggleMode()
     {
+        if (Ended)
+            return;
+
         var ss = FindObjectsOfType<MonoBehaviour>().OfType<IModeChanged>();
         
         if (CurrentMode == GameMode.Easy)
@@ -103,13 +114,31 @@ public class GameManager : MonoBehaviour
 
     public void OnMissBeat()
     {
+        if (Ended)
+            return;
+        
         Points -= OnMissBeatDmg;
+        if (CurrentMode == GameMode.Easy)
+            OnMissEasy.Invoke();
+        else
+            OnMissHard.Invoke();
     }
 
     public void OnEnemyHit()
     {
-        if (CurrentMode == GameMode.Easy)
-            Points += OnHitPoints;
+        if (Ended)
+            return;
+
+        //if (CurrentMode == GameMode.Easy)
+        Points += OnHitPoints;
+    }
+
+    public void OnGoodBeat()
+    {
+        if (Ended)
+            return;
+
+        Points += OnGoodBeatPoints;
     }
 
     public void OnWin()

@@ -13,7 +13,8 @@ public class RythmController : MonoBehaviour, IGameEnded
 
     [Header("Music")]
     public MusicController Controller;
-    
+
+    public int BeatsDelay = 10;
     public int BPM = 120;
 
     [Range(0.0f, 1.0f)]
@@ -73,6 +74,8 @@ public class RythmController : MonoBehaviour, IGameEnded
     
     void UpdateBeatTrack(float deltaTime)
     {
+        return;
+         
         BeatOffset -= BeatVelocity * deltaTime;
 
         var margin = BeatElementSize * BeatMap.Length;
@@ -86,7 +89,9 @@ public class RythmController : MonoBehaviour, IGameEnded
     void Start()
     {
         Controller.Play();
-        
+        BeatsToSkip = BeatsDelay;
+
+        return;
         TrackImages.AddRange(BeatTrack.GetComponentsInChildren<Image>());
         for (int i = 0; i < TrackImages.Count; i++)
         {
@@ -102,6 +107,8 @@ public class RythmController : MonoBehaviour, IGameEnded
         }
     }
 
+    private int BeatsToSkip;
+
     void Update()
     {
         var deltaTime = GetTime() - LastTime;
@@ -110,16 +117,23 @@ public class RythmController : MonoBehaviour, IGameEnded
         {
             LastBeatTime = GetTime();
 
-            if (IsInSkillFrame() && OnAfterBeat != null)
+            if (BeatsToSkip > 0)
             {
-                OnAfterBeat.Invoke();
-                var ss = FindObjectsOfType<MonoBehaviour>().OfType<IBeatHandler>();
-                foreach (IBeatHandler s in ss) {
-                    s.OnBeat();
-                }
+                BeatsToSkip--;
             }
-            else if (OnAfterPause != null)
-                OnAfterPause.Invoke();
+            else
+            {
+                if (IsInSkillFrame() && OnAfterBeat != null)
+                {
+                    OnAfterBeat.Invoke();
+                    var ss = FindObjectsOfType<MonoBehaviour>().OfType<IBeatHandler>();
+                    foreach (IBeatHandler s in ss) {
+                        s.OnBeat();
+                    }
+                }
+                else if (OnAfterPause != null)
+                    OnAfterPause.Invoke();
+            }
             
             BeatIndex++;
             
@@ -140,7 +154,7 @@ public class RythmController : MonoBehaviour, IGameEnded
         else
             TargetFrame.color = Color.white;
         
-        UpdateBeatTrack(deltaTime);
+        //UpdateBeatTrack(deltaTime);
         LastTime = GetTime();
     }
 

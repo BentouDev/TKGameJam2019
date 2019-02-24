@@ -161,6 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DrawDebug: 1
+  IsAlive: 0
   Body: {fileID: 2094020173}
   MaxSpeed: 1024
   GroundLayers:
@@ -567,7 +568,7 @@ PrefabInstance:
     - target: {fileID: 13700000, guid: 3e00464ac410b164fa0a7bc0e8da2122, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 01397183d2215544a9127057f2c8a119, type: 2}
+      objectReference: {fileID: 2100000, guid: 18e0b8b9cf23918409515154f0b42af3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3e00464ac410b164fa0a7bc0e8da2122, type: 3}
 --- !u!1 &1620837658208822732 stripped
