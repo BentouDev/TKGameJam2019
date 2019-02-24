@@ -45,7 +45,7 @@ namespace UnityTemplateProjects
                 // Music.Progress = MusicController.NiceProgress.No;
             }
 
-            if (GoodCombo > 3)
+            if (GoodCombo > 14)
             {
                 if (Game.CurrentMode == GameManager.GameMode.Hard && CanAnimate)
                 {
