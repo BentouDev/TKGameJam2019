@@ -115,7 +115,7 @@ public class GameManager : MonoBehaviour
     public void OnWin()
     {
         Ended = true;
-        Player.enabled = false;
+        Player.IsAlive = false;
         OnWonCallback.Invoke();
         
         var ss = FindObjectsOfType<MonoBehaviour>().OfType<IGameEnded>();
@@ -127,7 +127,7 @@ public class GameManager : MonoBehaviour
     public void OnLose()
     {
         Ended = true;
-        Player.enabled = false;
+        Player.IsAlive = false;
         OnLoseCallback.Invoke();
         
         var ss = FindObjectsOfType<MonoBehaviour>().OfType<IGameEnded>();

@@ -9,7 +9,9 @@ public class PlayerMovement : MonoBehaviour
 {
     public bool DrawDebug;
 
-    [Header("Physics")] public Rigidbody2D Body;
+    [Header("Physics")] 
+    public bool IsAlive;
+    public Rigidbody2D Body;
     public float MaxSpeed;
     public LayerMask GroundLayers;
 
@@ -88,7 +90,13 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        ProcessInput();
+        if (IsAlive)
+            ProcessInput();
+        else
+        {
+            LastDirection = 0;
+            CurrentVelocity = 0;
+        }
 
         if (IsGrounded())
             AirVelocity = 0;
@@ -130,7 +138,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 // Move right on jump!
                 DoJump();
-                DoInput(1);
+                // DoInput(1);
                 DoSkill();
             }
 
