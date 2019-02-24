@@ -226,10 +226,10 @@ ModelImporter:
     2100000: lambert1
     4300000: Mesh3
     7400000: T-Pose
-    7400002: Good_Walk
-    7400004: Good_Idle
-    7400006: Good_Jump
-    7400008: Good_Fall
+    7400002: Good_Idle
+    7400004: Good_Jump
+    7400006: Good_Fall
+    7400008: Good_Walk
     9500000: //RootNode
     13700000: Mesh3
   externalObjects: {}
