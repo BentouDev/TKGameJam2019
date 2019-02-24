@@ -88,7 +88,7 @@ public class SweetKiwiController : MonoBehaviour//, IBeatHandler
 
     void hoveringKiwiHandler( )
     {
-        Debug.Log(initialPosition.x + Mathf.Sin(Time.time) * oscilationValue  );
+        // Debug.Log(initialPosition.x + Mathf.Sin(Time.time) * oscilationValue  );
         transform.position.Set( 
             transform.position.x,
             initialPosition.x + Mathf.Sin(Time.time) * oscilationValue, 
