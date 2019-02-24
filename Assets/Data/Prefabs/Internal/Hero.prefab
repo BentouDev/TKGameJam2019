@@ -162,7 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DrawDebug: 1
   Body: {fileID: 2094020173}
-  MaxSpeed: 560
+  MaxSpeed: 1024
   GroundLayers:
     serializedVersion: 2
     m_Bits: 1

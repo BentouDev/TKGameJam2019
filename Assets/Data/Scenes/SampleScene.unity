@@ -324,6 +324,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1121253272228213877, guid: 10bf99fa21e60db40a7ad218328bbdca,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2050078567730884209, guid: 10bf99fa21e60db40a7ad218328bbdca,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8318933724956541260, guid: 10bf99fa21e60db40a7ad218328bbdca,
         type: 3}
       propertyPath: m_Name
@@ -438,15 +448,20 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -11.15836
       objectReference: {fileID: 0}
-    - target: {fileID: 8318933725516231448, guid: 10bf99fa21e60db40a7ad218328bbdca,
-        type: 3}
-      propertyPath: MaxSpeed
-      value: 1024
-      objectReference: {fileID: 0}
     - target: {fileID: 9070484351990047947, guid: 10bf99fa21e60db40a7ad218328bbdca,
         type: 3}
       propertyPath: spawnScatterRadius
       value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318933724687083985, guid: 10bf99fa21e60db40a7ad218328bbdca,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8318933725965328240, guid: 10bf99fa21e60db40a7ad218328bbdca,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 995186832, guid: 10bf99fa21e60db40a7ad218328bbdca, type: 3}
       propertyPath: m_LocalPosition.z
