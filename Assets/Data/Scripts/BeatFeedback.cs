@@ -18,11 +18,26 @@ namespace UnityTemplateProjects
         private int GoodCombo;
         private int BadCombo;
 
-        void Update()
-        {
-            
-        }
+        private MusicController Music;
         
+        void Start()
+        {
+            Music = FindObjectOfType<MusicController>();
+        }
+
+        private void Update()
+        {
+            if (BadCombo > 3)
+            {
+                Music.Progress = MusicController.NiceProgress.No;
+            }
+
+            if (GoodCombo > 3)
+            {
+                Music.Progress = MusicController.NiceProgress.Yes;
+            }
+        }
+
         public void OnTooFast()
         {
             GoodCombo = 0;

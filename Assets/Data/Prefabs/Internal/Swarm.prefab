@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Kiwi: {fileID: 5864842463132090441, guid: 717f38a12f15ca3438c604ec782fa0c9, type: 3}
-  kiwiCount: 100
+  kiwiCount: 95
   swarmRigidbody2D: {fileID: 0}
   kiwis: []
   rigidKiwis: []

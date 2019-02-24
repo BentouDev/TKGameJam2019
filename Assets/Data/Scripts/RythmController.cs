@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Game;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityTemplateProjects;
@@ -109,7 +111,13 @@ public class RythmController : MonoBehaviour, IGameEnded
             LastBeatTime = GetTime();
 
             if (IsInSkillFrame() && OnAfterBeat != null)
+            {
                 OnAfterBeat.Invoke();
+                var ss = FindObjectsOfType<MonoBehaviour>().OfType<IBeatHandler>();
+                foreach (IBeatHandler s in ss) {
+                    s.OnBeat();
+                }
+            }
             else if (OnAfterPause != null)
                 OnAfterPause.Invoke();
             
