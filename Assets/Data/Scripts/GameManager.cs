@@ -50,6 +50,20 @@ public class GameManager : MonoBehaviour
 
         FindObjectOfType<MusicController>().Coefficient =
             StartingMode == GameMode.Easy ? 1.0f : 0.0f;
+
+        var ss = FindObjectsOfType<MonoBehaviour>().OfType<IModeChanged>();
+        if (StartingMode == GameMode.Easy)
+        {
+            foreach (IModeChanged s in ss) {
+                s.OnEasy();
+            }
+        }
+        else
+        {
+            foreach (IModeChanged s in ss) {
+                s.OnHard();
+            }
+        }
     }
 
     void Update()
