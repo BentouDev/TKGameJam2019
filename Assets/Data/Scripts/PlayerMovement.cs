@@ -147,7 +147,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetButtonDown(Left))
         {
-            DoInput(-1);
+            DoInput(-0.5f);
             DoSkill();
         }
 
